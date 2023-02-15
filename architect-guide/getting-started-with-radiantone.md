@@ -11,7 +11,7 @@ As discussed throughout this document, at the heart of most identity integration
 
 The RadiantOne Control Panels are web-based interfaces to provide remote access to the most commonly used tools and wizards. In addition, the control panels offer monitoring, access to server statistics, reports, task management, and other administration options. They can be accessed from mobile or non-mobile devices including iPods and iPads.
 
->**Note - To access the control panels, JavaScript must be enabled in the Internet browser you are using.**
+>[!note] To access the control panels, JavaScript must be enabled in the Internet browser you are using.
 
 ### Main Control Panel
 
@@ -135,7 +135,7 @@ The Log Viewer Tab is the console where you can view all RadiantOne log files.
 
 RadiantOne includes a set of wizards to assist administrators with some of the most common configuration tasks. They are designed to guide administrators through the identity integration process. This includes tasks such as building a unique user list, how to handle group entries (migrate them or create dynamic groups), and how to design the virtual namespace (flat tree or merge into an existing hierarchy). Each wizard is tailored for specific use cases, depending on the needs of the applications that will be consuming the identity. For more information on the wizards, please see the sections below.
 
->**Note – for step-by-step instructions on using the wizards, please see the RadiantOne Identity Service Wizards Guide.**
+>[!note] for step-by-step instructions on using the wizards, please see the RadiantOne Identity Service Wizards Guide.
 
 ### Global Identity Builder
 
