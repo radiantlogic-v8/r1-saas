@@ -14,7 +14,7 @@ Classname: com.rli.vrs.driver.JDBCDriver
 URL Syntax: jdbc:vrs://<hostname>:<port>/<context>[client options]
 ```
 
->**Note – for URL syntax when connecting VRS with a client certificate, see the [Client Options](#client-options) section.**
+>[!note] for URL syntax when connecting VRS with a client certificate, see the [Client Options](#client-options) section.
 
 ## Context
 
@@ -39,14 +39,15 @@ There are two modes supported by the JDBC driver: ldap and context.
 
 -	Context – This is the default mode. If &id=dn is NOT appended at the end of the context, VRS accesses the RadiantOne service in Context mode. In this mode, the primary key of the table is an attribute named contextid. The value of contextid is the “path” to the entry which is essentially the entry DN reversed. For example, if an entry’s DN is something like uid=sbuchanan,ou=accounting,o=vds, the contextid for this entry would be o=vds/ou=accounting/uid=sbuchanan. The foreign key of the table is an attribute named parentcontext. The value of parentcontext is the “path” to the to the parent entry. Using the previous example, the parentcontext would be o=vds/ou=accounting.
 
-### SSL 
+### SSL
+
 Use of SSL between the JDBC driver and VRS. If you want the JDBC driver to connect to VRS over SSL, use the syntax shown in the following URL.
 
 ```
 jdbc:vrs://<hostname>:<ssl_port>/<context>&ssl=true[&user=<user_dn>&password=<password>] 
 ```
 
-><span style="color:red">**IMPORTANT NOTE – the user and password properties are optional. If [mutual authentication](#certificate-basedmutual-authentication) is used, and the client certificate to DN mapping fails to identify a user to base authorization on, the user DN in the connection string can be used by RadiantOne to enforce authorization for the connection. If the mapping fails and no user is specified in the JDBC connection string, RadiantOne enforces anonymous access.**
+>[!warning] the user and password properties are optional. If [mutual authentication](#certificate-basedmutual-authentication) is used, and the client certificate to DN mapping fails to identify a user to base authorization on, the user DN in the connection string can be used by RadiantOne to enforce authorization for the connection. If the mapping fails and no user is specified in the JDBC connection string, RadiantOne enforces anonymous access.
 
 #### Certificate-based/Mutual Authentication 
 
@@ -58,7 +59,7 @@ For normal SSL communications, where the only requirement is that the client tru
 
 ![An image showing ](Media/Image3.1.jpg)
 
-Figure 3.1.: Mutual Authentication
+Figure 1: Mutual Authentication
 
 There are three options for mutual authentication and this can be set from the Main Control Panel > Settings Tab > Security section > SSL > Mutual Auth. Client Certificate drop-down menu: Required, Requested and None (default value). 
 
