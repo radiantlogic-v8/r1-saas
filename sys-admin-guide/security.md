@@ -186,6 +186,8 @@ Only when the first DN mapping rule fails to find a user will the other DN mappi
 
 Remember, changing any parameters related to SSL requires a restart of the RadiantOne service.
 
+
+<!-- 
 ### Client Certificates (Default Java Truststore)
 
 For RadiantOne to connect via SSL to an underlying data source, or accept client certificates for authentication, the appropriate client certificate needs imported (unless they are signed by a trusted/known Certificate Authority). For classic RadiantOne architectures (active/active or active/passive), these certificates can be imported into the default Java trust store (<RLI_HOME>\jdk\jre\lib\security\cacerts). 
@@ -197,6 +199,8 @@ To manage the client certificates contained in the default Java trust store, cli
 ![Managing Client Certificates in the Default Java Truststore](Media/Image3.85.jpg)
 
 Figure 4: Managing Client Certificates in the Default Java Truststore
+
+-->
 
 **Viewing Client Certificates**
 
