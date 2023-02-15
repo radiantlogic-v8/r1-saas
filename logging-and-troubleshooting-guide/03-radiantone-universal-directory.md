@@ -50,7 +50,7 @@ The vds_server.log records:
 
 Select a log level from the drop-down list in the Log Settings section. For details on available log levels, see [Chapter 1](01-overview).
 
-><span style="color:red">**IMPORTANT NOTE - to troubleshoot/trace ACI evaluation decisions, RadiantOne server log level must be set to DEBUG. When DEBUG level is set, the evaluation rules can be seen in: <RLI_HOME>/vds_server/logs/vds_server.log. An example of ACI evaluation is shown below:
+>[!warning] to troubleshoot/trace ACI evaluation decisions, RadiantOne server log level must be set to DEBUG. When DEBUG level is set, the evaluation rules can be seen in: <RLI_HOME>/vds_server/logs/vds_server.log. An example of ACI evaluation is shown below:
 2021-05-07T15:40:44,920 DEBUG com.rli.slapd.aci.generic.AciHandler:436 - 
   [ACI EVAL] operation: 'SEARCH REQUEST'
   [ACI EVAL]  targetDN: 'ou=Accounting,o=companydirectory'
@@ -59,7 +59,7 @@ Select a log level from the drop-down list in the Log Settings section. For deta
   [ACI EVAL] Aci candidate # 1 - '(targetattr = "*")(target = "ldap:///o=companydirectory")(targetscope = "subtree")(version 3.0;acl "myaci description";deny (all) (userdn = "ldap:///uid=Aaron_Medler,ou=Accounting,o=companydirectory");)'
   [ACI EVAL] Aci candidate # 2 - '(targetattr!="aci")(version 3.0; acl "Grant read access to anyone"; allow (read,search,compare) userdn="ldap:///anyone";)'
   [ACI EVAL] Aci evaluation result: --DENY-- 
-2021-05-07T15:40:44,921 DEBUG com.rli.slapd.server.nio.SessionHandler:2354 - [conn=50 op=2]  Entry discared by ACI**
+2021-05-07T15:40:44,921 DEBUG com.rli.slapd.server.nio.SessionHandler:2354 - [conn=50 op=2]  Entry discared by ACI
 
 ### Rollover Size
 
@@ -89,7 +89,7 @@ The vds_server_access.log contains less information than vds_server.log and is u
 
 The output format for the access log is Text by default. The other output option is CSV. If you want the log content written to a database, you must enable the CSV output option and use the [Log2DB utility](#configuring-the-database-logging-utility-log2db).
 
->**Note – to turn off access logging, uncheck both the text and csv output options.**
+>[!note] to turn off access logging, uncheck both the text and csv output options.
 
 If you would like column name headers (descriptions) in the CSV file, check the “Add Column Name Headers to CSV Logging” option.
 
@@ -115,7 +115,7 @@ Figure 3. 2: Enabling bind DN info for vds_server_access.log
 
 The access log now displays bind DN information for Search Results for both successful and unsuccessful binds.
 
->**Note – This setting does not affect vds_server_access.csv, which displays bind DN information by default.**
+>[!note] This setting does not affect vds_server_access.csv, which displays bind DN information by default.
 
 The following example entry shows bind DN information for a successful bind. 
 
@@ -227,7 +227,7 @@ Queries to certain internal naming contexts can happen frequently resulting in a
 
 Certain queries used to monitor RadiantOne can happen frequently, resulting in a lot of “noise” in the access log. Logging of monitoring requests is disabled by default. To enable logging of monitoring requests, navigate to <RLI_HOME>/config/advanced and edit features.properties. Set vds.data.collection.logging=true. Restart the RadiantOne service. If RadiantOne is deployed in a cluster, restart the service on all nodes.
 
-Note – if vds.data.collection.logging is set to true, ZooKeeper exceptions returned by data collectors used for monitoring are logged into <RLI_HOME>/vds/vds_server/logs/vds_server.log. Also, requests for data collectors on the admin HTTP port are logged into <RLI_HOME>/vds/vds_server/logs/scheduler/server.log.
+>[!note] if vds.data.collection.logging is set to true, ZooKeeper exceptions returned by data collectors used for monitoring are logged into <RLI_HOME>/vds/vds_server/logs/vds_server.log. Also, requests for data collectors on the admin HTTP port are logged into <RLI_HOME>/vds/vds_server/logs/scheduler/server.log.
 
 ### Logging to a Database
 
@@ -239,7 +239,7 @@ The Log2DB utility reads the contents from vds_server_access.csv (CSV log output
 
 The database that houses the table which the Log2DB utility writes to may be in any database server you choose. 
 
-><span style="color:red">**IMPORTANT NOTE – if you plan on using the RadiantOne default report generation, then the log2db database must be Microsoft SQL Server, Oracle, Derby or PostgreSQL. For details on default reports see the RadiantOne Monitoring and Reporting Guide.**
+>[!warning] if you plan on using the RadiantOne default report generation, then the log2db database must be Microsoft SQL Server, Oracle, Derby or PostgreSQL. For details on default reports see the RadiantOne Monitoring and Reporting Guide.
 
 The default settings leverage a Derby database that is included with RadiantOne. These settings are described below and are located on the Main Control Panel -> Settings Tab -> Reporting section -> Log2db Settings sub-section. The default configuration file for logging to a database is: <RLI_HOME>/config/log2db/AccessLog2DBconfig.properties.
 
@@ -263,7 +263,7 @@ To delete the contents of the log table, click the EMPTY TABLE button.
 
 The utility that writes the RadiantOne logs into a database is named Log2DB and can be started from command line or as a service. The database server configured to store the log contents must be running prior to starting the Log2DB utility.
 
-><span style="color:red">**IMPORTANT NOTE – If RadiantOne is deployed in a cluster, the data source associated with the database housing the log content is shared by all cluster nodes. However, since search requests can be directed to any cluster node, the Log2DB utility must be running on each cluster node.**
+>[!warning] If RadiantOne is deployed in a cluster, the data source associated with the database housing the log content is shared by all cluster nodes. However, since search requests can be directed to any cluster node, the Log2DB utility must be running on each cluster node.
 
 **From Command Line**
 
@@ -290,7 +290,7 @@ To install the RadiantOne database access logger as a service:
 
 4.	Check your Windows Services. You should now have a service named RadiantOne DB Access Logger (or other name as defined in step 2 above). You can now start and stop the database logger as a Windows service. 
 
->**Note – If you would like to uninstall the service, first stop the service and then execute db-access-logger-service-uninstall.bat.**
+>[!note] If you would like to uninstall the service, first stop the service and then execute db-access-logger-service-uninstall.bat.
 
 **As a Linux Daemon
 
@@ -515,7 +515,7 @@ The ADAP access log records the following.
 
 Select a log level from the drop-down list in the Log Settings section. For details on available log levels, see Chapter 1. The default log level for this log is OFF.
 
-><span style="color:red">**IMPORTANT NOTE – to log Certificate Revocation error messages when accessing ADAP using mutual authentication, set the log level to DEBUG from the Main Control Panel -> Zookeeper tab by navigating to radiantone/v2/<cluster_name>/config/logging/log4j2-vds.json and updating the “Loggers” section with the information shown below.**
+>[!warning] to log Certificate Revocation error messages when accessing ADAP using mutual authentication, set the log level to DEBUG from the Main Control Panel -> Zookeeper tab by navigating to radiantone/v2/<cluster_name>/config/logging/log4j2-vds.json and updating the “Loggers” section with the information shown below.
 
 ```json
 "loggers" : {
@@ -602,7 +602,7 @@ Figure 3.8: Configuring Active Directory Password Extraction Logs
 
 This parameter sets the name and location of the log file, including archived log files. By default, the log file is named ad_pwd_hash_ws_server.log. The default base directory (“basedir”) is <RLI_HOME>\bin\ad_pwd. 
 
-><span style="color:red">**IMPORTANT NOTE – If you change the base directory, verify that RadiantOne has access to the folder.**
+>[!warning] If you change the base directory, verify that RadiantOne has access to the folder.
 
 Archived log files are also saved to this location. Archived log file names use filename value and are appended with the archiveNumbering value. See ArchiveNumbering below for more information. 
 
@@ -610,7 +610,7 @@ Archived log files are also saved to this location. Archived log file names use 
 
 Archived log file names are appended according to the selection for this property. Allowable values for this parameter include the following. 
 
->**Note – In the following examples, the fileName has been set to PwdHashWSServer.**
+>[!note] In the following examples, the fileName has been set to PwdHashWSServer.
 
 Allowable Value	| How the log file name is appended	| Example(s) 
 -|-|-
